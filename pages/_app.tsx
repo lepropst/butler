@@ -39,7 +39,7 @@ export default function MyApp(props: any) {
                         position: "static",
                         margin: 0,
                         padding: 0,
-                        border: "1px solid blue",
+                        backgroundColor: theme.palette.background.default,
                     }}
                 >
                     <Header />

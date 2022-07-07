@@ -15,7 +15,7 @@ export const Theme = (mode: string) => {
                 dark: "#6B6570",
             },
             background: {
-                paper: "#FFF5E",
+                paper: "#FFEEEF",
                 default: "#FFF5EB",
             },
             grey: {
