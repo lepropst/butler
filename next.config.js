@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    images: {
-        domains: ["./public"],
-    },
     async redirects() {
         return [
             {
@@ -12,6 +9,9 @@ const nextConfig = {
                 permanent: true,
             },
         ];
+    },
+    images: {
+        domains: ["public"],
     },
 };
 
