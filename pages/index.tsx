@@ -57,7 +57,12 @@ const Home: NextPage = () => {
                                 marginY: ".5em",
                             }}
                         >
-                            <Image width={250} height={250} src={e} alt={e} />
+                            <Image
+                                width={250}
+                                height={250}
+                                src={e}
+                                alt={e.split("/").join(" ")}
+                            />
                         </Grid>
                     ))}
                 </Grid>
