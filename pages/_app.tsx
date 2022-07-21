@@ -8,6 +8,7 @@ import Theme from "../theming/useTheme";
 import createEmotionCache from "../theming/createEmotionCache";
 import { Header } from "../components";
 import { Box } from "@mui/material";
+import "../styles/globals.css";
 // Client-side cache shared for the whole session
 // of the user in the browser.
 
@@ -36,7 +37,7 @@ export default function MyApp(props: any) {
                 <CssBaseline />
                 <Box
                     sx={{
-                        position: "static",
+                        position: "relative",
                         margin: 0,
                         padding: 0,
                         backgroundColor: theme.palette.background.default,

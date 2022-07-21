@@ -79,7 +79,7 @@ export function ContactForm() {
                     onChange={handleDataChange}
                     minRows={10}
                     style={{ width: "100%" }}
-                    placeholder="Messagae"
+                    placeholder="Message"
                 />
             </Box>
             <Box
