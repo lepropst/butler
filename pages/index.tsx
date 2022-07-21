@@ -2,6 +2,7 @@ import { Box, Grid } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import path from "path";
 import styles from "../styles/Home.module.css";
 
 const dominoesNumImages = 8;
@@ -19,15 +20,15 @@ const Home: NextPage = () => {
 
     for (let i = 1; i <= dominoesNumImages; i++) {
         const imgName = constructImageName("resin", "dominoes", `0${i}`);
-        images.push(`/../public/pictures/${imgName}`);
+        images.push(`/../public/${imgName}`);
     }
     for (let i = 1; i <= platesNumImages; i++) {
         const imgName = constructImageName("resin", "plate", `0${i}`);
-        images.push(`/../public/pictures/${imgName}`);
+        images.push(`/../public/${imgName}`);
     }
     for (let i = 1; i <= vaseNumImages; i++) {
         const imgName = constructImageName("resin", "vase", `0${i}`);
-        images.push(`/../public/pictures/${imgName}`);
+        images.push(`/../public/${imgName}`);
     }
     return (
         <div className={styles.container}>
