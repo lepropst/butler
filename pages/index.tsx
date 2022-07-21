@@ -1,35 +1,62 @@
 import { Box, Grid } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
+import Image, { ImageLoader } from "next/image";
 import path from "path";
+import generateImageURL from "../components/generateImageURL";
+import ImageDisplay from "../components/ImageDisplay";
 import styles from "../styles/Home.module.css";
 
-const dominoesNumImages = 8;
-const platesNumImages = 2;
-const vaseNumImages = 1;
+const lengths: { [key: string]: any } = {
+    dominoes: 8,
+    plates: 2,
+    vases: 1,
+    ticTacToe: 1,
+    keychains: 25,
+};
 
-function constructImageName(base: string, type: string, index: string) {
-    return `${base}_${type}_${index}.jpg`;
-}
 const Home: NextPage = () => {
-    const dominoes = [];
-    const plates = [];
-    const vases = [];
-    const images: string[] = [];
+    let images: {
+        dominoes: string[];
+        plates: string[];
+        vases: string[];
+        ticTacToe: string[];
+        keyChains: string[];
+    } = {
+        dominoes: [],
+        plates: [],
+        vases: [],
+        ticTacToe: [],
+        keyChains: [],
+    };
 
-    for (let i = 1; i <= dominoesNumImages; i++) {
-        const imgName = constructImageName("resin", "dominoes", `0${i}`);
-        images.push(`/../public/${imgName}`);
-    }
-    for (let i = 1; i <= platesNumImages; i++) {
-        const imgName = constructImageName("resin", "plate", `0${i}`);
-        images.push(`/../public/${imgName}`);
-    }
-    for (let i = 1; i <= vaseNumImages; i++) {
-        const imgName = constructImageName("resin", "vase", `0${i}`);
-        images.push(`/../public/${imgName}`);
-    }
+    images.dominoes = generateImageURL(
+        "dominoes",
+        "dominoes",
+        lengths.dominoes,
+        "resin_"
+    );
+    images.vases = generateImageURL("vases", "vase", lengths.vases, "resin_");
+    images.plates = generateImageURL(
+        "plates",
+        "plate",
+        lengths.plates,
+        "resin_"
+    );
+    images.ticTacToe = generateImageURL(
+        "tictactoe",
+        "tictactoe",
+        lengths.ticTacToe,
+        "resin_"
+    );
+    images.keyChains = generateImageURL(
+        "keychains",
+        "keychain",
+        lengths.keychains
+    );
+
+    console.log(images);
+    const { dominoes, plates, vases, keyChains, ticTacToe } = images;
     return (
         <div className={styles.container}>
             <Head>
@@ -37,36 +64,19 @@ const Home: NextPage = () => {
                 <meta name="description" content="Roxanne Butler Art" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Box
-                sx={{
-                    margin: "2em",
-                    display: "flex",
-                    justifyContent: "center",
-                }}
-            >
-                <Grid container>
-                    {images.map((e, i) => (
-                        <Grid
-                            spacing={2}
-                            xs={6}
-                            md={4}
-                            key={`${e}-${i}`}
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                marginY: ".5em",
-                            }}
-                        >
-                            <Image
-                                width={250}
-                                height={250}
-                                src={e}
-                                alt={e.split("/").join(" ")}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Box>
+
+            <Grid container spacing={2} justifyContent={"center"}>
+                <ImageDisplay imageURLs={dominoes} label={"Dominoes"} />
+                <ImageDisplay imageURLs={plates} label={"Plates"} />
+                <ImageDisplay imageURLs={vases} label={"Vases"} />
+                <ImageDisplay imageURLs={ticTacToe} label={"Tic Tac Toe"} />
+                <ImageDisplay
+                    md={10}
+                    height={800}
+                    imageURLs={keyChains}
+                    label={"Key Chains"}
+                />
+            </Grid>
         </div>
     );
 };
