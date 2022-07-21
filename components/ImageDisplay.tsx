@@ -38,9 +38,7 @@ export function ImageDisplay(props: Props) {
             }}
         >
             {/* <Link href={`categoriess/${props.label.toLowerCase()}`}> */}
-            <Typography variant="h4" textDecoration="underline">
-                {props.label}
-            </Typography>
+            <Typography variant="h4">{props.label}</Typography>
             {/* </Link> */}
             <ImageList
                 sx={{ width: props.md ? "100%" : "40vw", height: "60vh" }}
